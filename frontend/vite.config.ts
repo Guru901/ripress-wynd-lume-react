@@ -11,6 +11,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/hello": "http://localhost:3000",
+      "/": "http://localhost:3000",
     },
   },
 });

@@ -46,8 +46,9 @@ async fn main() -> Result<(), DatabaseError> {
             if event.data == "get_users" {
                 let users = get_users().await;
                 handle.send_text(&users.join(",")).await.unwrap();
+            } else {
+                handle.broadcast.emit_text(&event.data).await;
             }
-            handle.broadcast.emit_text(&event.data).await;
         });
     });
 
